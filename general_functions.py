@@ -31,24 +31,45 @@ def total_count(df, col1, col2, look_for):
     return new_df
 
 '''
-FUNCTION: 
+FUNCTION: Create a bar plot of a given df which shows the percentage of each category
+
+INPUTS:
+    df - data frame to model
+    title - string of the plot's title
+    plot - boolean - if true, the function plots the data
+
+OUTPUTS:
+    final_df - data frame with values from df and their percentage of the total repsonses
 '''
 def bar_plotting(df,title='Title',plot=True):
     df.set_index(df.columns[0], inplace=True)
     if plot:
         (df/df.sum()).plot(kind='bar',legend=None)
+        plt.ylabel('percentage')
         plt.title(title)
         plt.show()
     final_df = df/df.sum()
     return final_df
 
 '''
-'''
-def clean_age(df, lang_used, title='Title', plot=True):
-    lang = df['LanguageWorkedWith'].value_counts().reset_index()
-    lang.rename(columns={'index':'language','LanguageWorkedWith':'count'}, inplace = True)
-    lang_df = total_count(lang,'language','count',lang_used)
+FUNCTION: Create a new data frame with the percentage break down of frequency of unique values by the chosen category
 
-    lang_df.set_index('language', inplace=True)
-    final_df = lang_df/lang_df.sum()
+INPUTS:
+    df - data frame to model
+    unique_vals - list of possible values to search for
+    ref_col - string of the name of the column to search in the data frame
+    cat_breakdown - string of the name of the column by which to breakdown the percentages of the ref_col
+
+OUTPUTS:
+    final_df - data frame with values from cat_breakdown broken down into percentages of ref_col
+'''
+def percentage_breakdown(df, unique_vals, ref_col, cat_breakdown):
+    values = df[ref_col].value_counts().reset_index()
+    values.rename(columns={'index':ref_col,ref_col:'percent by' + cat_breakdown}, inplace = True)
+    values_df = total_count(values,ref_col,'count',unique_vals)
+
+    values_df.set_index(ref_col, inplace=True)
+    final_df = values_df/values_df.sum()
     return final_df
+
+
