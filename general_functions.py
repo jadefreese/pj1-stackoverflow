@@ -27,7 +27,7 @@ def total_count(df, col1, col2, look_for):
                 new_df[val] += int(df[col2][idx])   
     new_df = pd.DataFrame(pd.Series(new_df)).reset_index()
     new_df.columns = [col1, col2]
-    new_df.sort_values('count', ascending=False, inplace=True)
+    new_df.sort_values(col2, ascending=False, inplace=True)
     return new_df
 
 '''
@@ -65,11 +65,15 @@ OUTPUTS:
 '''
 def percentage_breakdown(df, unique_vals, ref_col, cat_breakdown):
     values = df[ref_col].value_counts().reset_index()
-    values.rename(columns={'index':ref_col,ref_col:'percent by' + cat_breakdown}, inplace = True)
-    values_df = total_count(values,ref_col,'count',unique_vals)
+    percentage_col = 'percent by' + cat_breakdown
+    values.rename(columns={'index':ref_col,ref_col:percentage_col}, inplace = True)
+    values_df = total_count(values,ref_col,percentage_col,unique_vals)
 
     values_df.set_index(ref_col, inplace=True)
     final_df = values_df/values_df.sum()
     return final_df
+
+def color_if_above_average(df):
+    df.style.apply(lambda x: ["background: red" if v > x.iloc[df.shape[1]-1] else "" for v in x], axis = 1)
 
 
