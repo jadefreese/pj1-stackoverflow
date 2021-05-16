@@ -65,7 +65,7 @@ OUTPUTS:
 '''
 def percentage_breakdown(df, unique_vals, ref_col, cat_breakdown):
     values = df[ref_col].value_counts().reset_index()
-    percentage_col = 'percent by' + cat_breakdown
+    percentage_col = 'percent by ' + cat_breakdown
     values.rename(columns={'index':ref_col,ref_col:percentage_col}, inplace = True)
     values_df = total_count(values,ref_col,percentage_col,unique_vals)
 
@@ -73,7 +73,18 @@ def percentage_breakdown(df, unique_vals, ref_col, cat_breakdown):
     final_df = values_df/values_df.sum()
     return final_df
 
-def color_if_above_average(df):
-    df.style.apply(lambda x: ["background: red" if v > x.iloc[df.shape[1]-1] else "" for v in x], axis = 1)
+'''
+FUNCTION: Return the top category of sorted input dataframe
+
+INPUTS:
+    df - data frame containing the percentage breakdown of a category
+
+OUTPUTS:
+    top_val - string containing the top category from the dataframe
+'''
+def get_max_cat(df):
+    df = df.transpose()
+    top_val = df.columns[0]
+    return top_val
 
 
