@@ -65,9 +65,8 @@ OUTPUTS:
 '''
 def percentage_breakdown(df, unique_vals, ref_col, cat_breakdown):
     values = df[ref_col].value_counts().reset_index()
-    percentage_col = 'percent by ' + cat_breakdown
-    values.rename(columns={'index':ref_col,ref_col:percentage_col}, inplace = True)
-    values_df = total_count(values,ref_col,percentage_col,unique_vals)
+    values.rename(columns={'index':ref_col,ref_col:cat_breakdown}, inplace = True)
+    values_df = total_count(values,ref_col,cat_breakdown,unique_vals)
 
     values_df.set_index(ref_col, inplace=True)
     final_df = values_df/values_df.sum()
@@ -87,4 +86,17 @@ def get_max_cat(df):
     top_val = df.columns[0]
     return top_val
 
+'''
+FUNCTION: Add top values of each data frame of the input list to a new dataframe of max categories
 
+INPUTS:
+    df - data frame to add rows to
+    max_vals - list of dataframes filtered by category
+
+OUTPUTS:
+    df - input dataframe containing the appended max value per category
+'''
+def add_top_per_cat(df,max_vals):
+    for cat_df in max_vals:
+        df = df.append({df.columns[0] : cat_df.columns[0], df.columns[1] : get_max_cat(cat_df)}, ignore_index = True)
+    return df
