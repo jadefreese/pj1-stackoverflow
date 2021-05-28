@@ -54,8 +54,8 @@ def bar_plotting(df, title='Title', plot=True):
         (df/df.sum()).plot(kind = 'bar', legend = None)
         plt.ylabel('percentage')
         plt.title(title)
-        plt.show()
         plt.savefig(title)
+        plt.show()
     final_df = df/df.sum()
     return final_df
 
