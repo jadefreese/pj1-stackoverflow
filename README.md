@@ -14,9 +14,13 @@ There should be no necessary libraries to run the code here beyond the Anaconda 
 
 For this project, I was interestested in using Stack Overflow data from 2020 to better understand:
 
-1. How did the age an individual wrote their first line of code influence the languages they worked with in 2020?
-2. What individual factors impact and individual's opinion on the importance of a formal education?
+1. How does age influence the languages and individual worked with in 2020?
+2. What factors impact an individual's opinion on the importance of a formal education?
 3. What factors impact how frequently an individual learns a new language or framework?
+
+## File Descriptions<a name="files"></a>
+
+## Results<a name="results"></a>
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
