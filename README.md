@@ -20,9 +20,14 @@ For this project, I was interestested in using Stack Overflow data from 2020 to 
 
 ## File Descriptions<a name="files"></a>
 
-There are 3 notebooks available here to showcase work related to the above questions. Each of the notebooks addresses on question as indicated in the title. Markdown cells were used to assist in walking through the thought process for individual steps.
+The data_prep.ipynb file gathers and cleans the data used in the remained of the project analysis.
 
-There is an additional .py file that contains general functions used for analysis in multiple of the notebook files.
+There are 3 notebooks available here to showcase work related to the above questions. Each of the notebooks addresses on question as indicated in the title. Markdown cells were used to assist in walking through the thought process for individual steps.
+1. 2020_languages.ipynb
+2. formal_edu.ipynb
+3. language_learning.ipynb
+
+There is an additional .py file (general_functions.ipynb) that contains general functions used for analysis in multiple of the notebook files.
 
 ## Results<a name="results"></a>
 
