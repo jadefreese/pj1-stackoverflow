@@ -8,31 +8,30 @@
 
 ## Installation <a name="installation"></a>
 
-There should be no necessary libraries to run the code here beyond the Anaconda distribution of Python.  The code should run with no issues using Python versions 3.*.
+In order to run this project, install Python 3 or higher with the following Python libraries: sys, numpy, pandas, sklearn, sqlalchemy, Ipython, seaborn, and plotly.
 
 ## Project Motivation<a name="motivation"></a>
 
-For this project, I was interestested in using Stack Overflow data from 2020 to better understand:
+For this project, I was interestested in using audio features from Spotify Top 50 tracks to understand:
 
-1. How does age influence the languages an individual worked with in 2020?
-2. What demographic factors impact an individual's opinion on the importance of a formal education?
-3. What demographic factors impact how frequently an individual learns a new language or framework?
+1. How do audio features impact the popularity of songs on Spotify?
+2. Can a song's audio features indicate the likely popularity of the 
+   song before it is released?
 
 ## File Descriptions<a name="files"></a>
 
-The data_prep.ipynb file gathers and cleans the data used in the remained of the project analysis.
+The Spotify Download.ipynb file gathers the tracks from the desired playlists and their audio features.
 
-There are 3 notebooks available here to showcase work related to the above questions. Each of the notebooks addresses on question as indicated in the title. Markdown cells were used to assist in walking through the thought process for individual steps.
-1. 2020_languages.ipynb
-2. formal_edu.ipynb
-3. language_learning.ipynb
+The Undsertanding the Data.ipynb file compiles, cleans, and completes the intial analysis of data from the downloaded tracks.
 
-There is an additional .py file (general_functions.ipynb) that contains general functions used for analysis in multiple of the notebook files.
+The above mentioned ipynb files can be found in the data folder along with saved images and saved csv files from running the ipynb files.
+
+Lastly, the regression_model.ipynb file contains the regression analysis of the compiled data frame and the output predictions from the model of popularity scores.
 
 ## Results<a name="results"></a>
 
-The findings from my analysis can be found on a medium blog available [here](https://jadefreese98.medium.com/how-demographics-impacted-developers-in-2020-b2f4036a0f0a).
+The findings from my analysis can be found on a medium blog available [here](https://jadefreese98.medium.com/audio-features-and-track-popularity-4309b42f9aae).
 
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
 
-I must give credit to Stack Overflow for the data.  You can find the Licensing for the data and other descriptive information at the Stack Overflow link available [here](https://insights.stackoverflow.com/survey).  Otherwise, the code found here is open for use however you would like.
+I must give credit to Spotify for the data.  You can find information on the Spotify API [here](https://developer.spotify.com/documentation/web-api/).  Otherwise, the code found here is open for use however you would like.
